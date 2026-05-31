@@ -1,0 +1,15 @@
+/**
+ * Shared row dividers (ingredient items, recipe intro block, etc.)
+ */
+.list-row-divider {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-row-divider--padded {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+
+.list-row-divider--flush-top {
+  padding-top: 0;
+}

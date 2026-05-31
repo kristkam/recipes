@@ -1,0 +1,105 @@
+import type { Recipe } from '@/types/recipe'
+
+export const mockRecipes: Recipe[] = [
+  {
+    id: 'creamy-mushroom-pasta',
+    title: 'Creamy Mushroom Pasta',
+    prepTimeMinutes: 25,
+    portions: 4,
+    tags: ['Vegetarian'],
+    thumbnail: {
+      background: 'linear-gradient(145deg, #d9cdb8 0%, #8a7358 55%, #5c4a38 100%)',
+      emoji: '',
+    },
+    ingredients: [
+      { name: 'Pasta', amount: 400, unit: 'g' },
+      { name: 'Mushrooms', amount: 300, unit: 'g' },
+      { name: 'Heavy cream', amount: 200, unit: 'ml' },
+      { name: 'Garlic', amount: 3, unit: 'cloves' },
+      { name: 'Parmesan', amount: 50, unit: 'g' },
+      { name: 'Olive oil', amount: 2, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Cook the pasta according to package instructions.',
+      'Sauté the mushrooms in a pan with olive oil until golden.',
+      'Add minced garlic and cook for 1 minute.',
+      'Stir in the cream and simmer for 5 minutes.',
+      'Toss pasta with sauce and top with parmesan.',
+    ],
+  },
+  {
+    id: 'chicken-tikka-masala',
+    title: 'Chicken Tikka Masala',
+    prepTimeMinutes: 45,
+    portions: 4,
+    tags: ['Indian'],
+    thumbnail: {
+      background: 'linear-gradient(145deg, #f0c4a0 0%, #d4783a 50%, #a84e20 100%)',
+      emoji: '',
+    },
+    ingredients: [
+      { name: 'Chicken breast', amount: 600, unit: 'g' },
+      { name: 'Yogurt', amount: 150, unit: 'g' },
+      { name: 'Tomato passata', amount: 400, unit: 'ml' },
+      { name: 'Heavy cream', amount: 100, unit: 'ml' },
+      { name: 'Tikka masala paste', amount: 3, unit: 'tbsp' },
+      { name: 'Basmati rice', amount: 300, unit: 'g' },
+    ],
+    instructions: [
+      'Marinate chicken in yogurt and half the tikka paste for 30 minutes.',
+      'Grill or pan-fry chicken until charred and cooked through.',
+      'Simmer passata with remaining paste and cream for 15 minutes.',
+      'Add chicken to sauce and simmer 10 minutes.',
+      'Serve over basmati rice.',
+    ],
+  },
+  {
+    id: 'berry-smoothie',
+    title: 'Berry Smoothie',
+    prepTimeMinutes: 5,
+    portions: 2,
+    tags: ['Breakfast'],
+    thumbnail: {
+      background: 'linear-gradient(145deg, #e8b4d4 0%, #c76b9a 50%, #8e4570 100%)',
+      emoji: '',
+    },
+    ingredients: [
+      { name: 'Mixed berries', amount: 200, unit: 'g' },
+      { name: 'Banana', amount: 1, unit: 'pc' },
+      { name: 'Greek yogurt', amount: 150, unit: 'g' },
+      { name: 'Milk', amount: 200, unit: 'ml' },
+      { name: 'Honey', amount: 1, unit: 'tbsp' },
+    ],
+    instructions: [
+      'Add all ingredients to a blender.',
+      'Blend until smooth, about 60 seconds.',
+      'Pour into glasses and serve immediately.',
+    ],
+  },
+  {
+    id: 'classic-lasagna',
+    title: 'Classic Lasagna',
+    prepTimeMinutes: 90,
+    portions: 6,
+    tags: ['Italian'],
+    thumbnail: {
+      background: 'linear-gradient(145deg, #f0d4a8 0%, #c87840 50%, #8b4020 100%)',
+      emoji: '',
+    },
+    ingredients: [
+      { name: 'Lasagna sheets', amount: 12, unit: 'pc' },
+      { name: 'Ground beef', amount: 500, unit: 'g' },
+      { name: 'Tomato sauce', amount: 800, unit: 'ml' },
+      { name: 'Ricotta', amount: 400, unit: 'g' },
+      { name: 'Mozzarella', amount: 200, unit: 'g' },
+      { name: 'Parmesan', amount: 100, unit: 'g' },
+    ],
+    instructions: [
+      'Brown the beef and simmer with tomato sauce for 20 minutes.',
+      'Layer sheets, meat sauce, ricotta, and mozzarella in a baking dish.',
+      'Repeat layers until ingredients are used.',
+      'Top with parmesan and bake at 180°C for 45 minutes.',
+      'Rest 10 minutes before serving.',
+    ],
+  },
+]
