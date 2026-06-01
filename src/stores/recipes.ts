@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 import { mockRecipes } from '@/data/recipes'
 import type { Recipe, RecipeId, RecipeInput } from '@/types/recipe'
-import { buildRecipeFromInput } from '@/utils/recipeCreate'
+import { applyRecipeUpdate, buildRecipeFromInput } from '@/utils/recipeCreate'
 
 const MIN_PORTIONS = 1
 const MAX_PORTIONS = 20
@@ -67,6 +67,27 @@ export const useRecipesStore = defineStore('recipes', () => {
     return recipe
   }
 
+  function updateRecipe(recipeId: RecipeId, input: RecipeInput): Recipe | undefined {
+    const index = recipes.value.findIndex((recipe) => recipe.id === recipeId)
+    if (index === -1) {
+      return undefined
+    }
+
+    const existing = recipes.value[index]!
+    const updated = applyRecipeUpdate(existing, input)
+    recipes.value = recipes.value.map((recipe, recipeIndex) =>
+      recipeIndex === index ? updated : recipe,
+    )
+
+    if (existing.portions !== updated.portions && portionOverrides.value[recipeId] !== undefined) {
+      const overrides = { ...portionOverrides.value }
+      delete overrides[recipeId]
+      portionOverrides.value = overrides
+    }
+
+    return updated
+  }
+
   return {
     recipes,
     searchQuery,
@@ -78,5 +99,6 @@ export const useRecipesStore = defineStore('recipes', () => {
     incrementPortions,
     decrementPortions,
     addRecipe,
+    updateRecipe,
   }
 })

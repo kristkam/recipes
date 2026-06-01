@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 import RecipeBasicsSection from '@/components/RecipeBasicsSection.vue'
@@ -24,6 +24,10 @@ const store = useRecipesStore()
 const draft = reactive<RecipeDraft>(createEmptyRecipeDraft())
 const currentStep = ref<RecipeWizardStep>('basics')
 const errors = ref<RecipeDraftErrors>({})
+
+watch(currentStep, () => {
+  errors.value = {}
+})
 
 const currentStepIndex = computed((): number => RECIPE_WIZARD_STEPS.indexOf(currentStep.value))
 const isFirstStep = computed((): boolean => currentStep.value === 'basics')
@@ -82,7 +86,7 @@ function saveRecipe(): void {
       <span class="recipe-new-view__spacer" aria-hidden="true" />
     </header>
 
-    <RecipeWizardSteps :current-step="currentStep" />
+    <RecipeWizardSteps v-model:current-step="currentStep" />
 
     <div class="recipe-new-view__content">
       <RecipeBasicsSection

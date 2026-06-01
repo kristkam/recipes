@@ -91,6 +91,36 @@ export function createEmptyRecipeDraft(): RecipeDraft {
   }
 }
 
+export function recipeToDraft(recipe: Recipe): RecipeDraft {
+  return {
+    title: recipe.title,
+    prepTimeMinutes: String(recipe.prepTimeMinutes),
+    portions: recipe.portions,
+    tags: [...recipe.tags],
+    ingredients:
+      recipe.ingredients.length > 0
+        ? recipe.ingredients.map((ingredient) => ({
+            name: ingredient.name,
+            amount: String(ingredient.amount),
+            unit: ingredient.unit,
+          }))
+        : [createEmptyIngredientDraft()],
+    instructions: recipe.instructions.length > 0 ? [...recipe.instructions] : [''],
+  }
+}
+
+export function applyRecipeUpdate(recipe: Recipe, input: RecipeInput): Recipe {
+  return {
+    ...recipe,
+    title: input.title,
+    prepTimeMinutes: input.prepTimeMinutes,
+    portions: input.portions,
+    tags: normalizeTags(input.tags),
+    ingredients: input.ingredients,
+    instructions: input.instructions,
+  }
+}
+
 export function draftToRecipeInput(draft: RecipeDraft): RecipeInput {
   return {
     title: draft.title.trim(),

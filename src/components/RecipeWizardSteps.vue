@@ -9,20 +9,25 @@ const STEP_LABELS: Record<RecipeWizardStep, string> = {
   review: 'Review',
 }
 
-const { currentStep } = defineProps<{
-  currentStep: RecipeWizardStep
-}>()
+const currentStep = defineModel<RecipeWizardStep>('currentStep', { required: true })
 
 function stepIndex(step: RecipeWizardStep): number {
   return RECIPE_WIZARD_STEPS.indexOf(step)
 }
 
 function isComplete(step: RecipeWizardStep): boolean {
-  return stepIndex(step) < stepIndex(currentStep)
+  return stepIndex(step) < stepIndex(currentStep.value)
 }
 
 function isActive(step: RecipeWizardStep): boolean {
-  return step === currentStep
+  return step === currentStep.value
+}
+
+function selectStep(step: RecipeWizardStep): void {
+  if (step === currentStep.value) {
+    return
+  }
+  currentStep.value = step
 }
 </script>
 
@@ -38,8 +43,16 @@ function isActive(step: RecipeWizardStep): boolean {
           'recipe-wizard-steps__item--complete': isComplete(step),
         }"
       >
-        <span class="recipe-wizard-steps__marker" aria-hidden="true">{{ index + 1 }}</span>
-        <span class="recipe-wizard-steps__label">{{ STEP_LABELS[step] }}</span>
+        <button
+          type="button"
+          class="recipe-wizard-steps__step"
+          :aria-current="isActive(step) ? 'step' : undefined"
+          :aria-label="`Go to ${STEP_LABELS[step]}`"
+          @click="selectStep(step)"
+        >
+          <span class="recipe-wizard-steps__marker" aria-hidden="true">{{ index + 1 }}</span>
+          <span class="recipe-wizard-steps__label">{{ STEP_LABELS[step] }}</span>
+        </button>
       </li>
     </ol>
   </nav>
@@ -61,12 +74,7 @@ function isActive(step: RecipeWizardStep): boolean {
 
 .recipe-wizard-steps__item {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5625rem;
-  padding-top: 0.375rem;
-  text-align: center;
+  min-width: 0;
 }
 
 .recipe-wizard-steps__item:not(:last-child)::after {
@@ -81,9 +89,29 @@ function isActive(step: RecipeWizardStep): boolean {
   z-index: 0;
 }
 
-.recipe-wizard-steps__marker {
+.recipe-wizard-steps__step {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5625rem;
+  width: 100%;
+  padding: 0.375rem 0 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.recipe-wizard-steps__step:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.recipe-wizard-steps__marker {
   width: 1.75rem;
   height: 1.75rem;
   border-radius: var(--radius-full);
@@ -119,5 +147,9 @@ function isActive(step: RecipeWizardStep): boolean {
 .recipe-wizard-steps__item--complete .recipe-wizard-steps__marker {
   background: #dce8e0;
   color: var(--color-nav-action);
+}
+
+.recipe-wizard-steps__step:hover .recipe-wizard-steps__label {
+  color: var(--color-text);
 }
 </style>
