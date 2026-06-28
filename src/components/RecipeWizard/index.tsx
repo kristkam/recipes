@@ -110,7 +110,7 @@ export function RecipeWizard({
 
     if (mode === 'create') {
       const created = addRecipe(input)
-      void navigate({ to: '/recipes/$recipeId', params: { recipeId: created.id } })
+      void navigate({ to: '/$recipeId', params: { recipeId: created.id } })
       return
     }
 
@@ -119,7 +119,7 @@ export function RecipeWizard({
     const updated = updateRecipe(recipeId, input)
     if (!updated) return
 
-    void navigate({ to: '/recipes/$recipeId', params: { recipeId: updated.id } })
+    void navigate({ to: '/$recipeId', params: { recipeId: updated.id } })
   }
 
   if (mode === 'edit' && !recipe) {

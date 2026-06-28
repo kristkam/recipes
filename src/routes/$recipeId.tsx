@@ -9,7 +9,7 @@ import { formatRecipeMetaShort, scaleIngredient } from '@/utils/recipeFormat'
 
 import './recipe-detail.css'
 
-export const Route = createFileRoute('/recipes/$recipeId/')({
+export const Route = createFileRoute('/$recipeId')({
   ssr: false,
   component: RecipeDetailPage,
 })
@@ -49,7 +49,7 @@ function RecipeDetailPage(): React.ReactElement {
             &lt; Back
           </button>
           <Link
-            to="/recipes/$recipeId/edit"
+            to="/$recipeId/edit"
             params={{ recipeId: recipe.id }}
             className="recipe-detail-view__nav-btn"
           >

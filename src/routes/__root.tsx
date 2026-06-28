@@ -6,6 +6,7 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 
+import { APP_BASE_PATH } from '@/app-config'
 import { RecipesProvider } from '@/state/recipes-context'
 
 import '@/styles/design-tokens.css'
@@ -18,9 +19,14 @@ export const Route = createRootRoute({
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'My Recipes' },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-title', content: 'My Recipes' },
+      { name: 'theme-color', content: '#6b8e7b' },
     ],
     links: [
-      { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'icon', href: `${APP_BASE_PATH}/favicon.ico` },
+      { rel: 'manifest', href: `${APP_BASE_PATH}/manifest.webmanifest` },
+      { rel: 'apple-touch-icon', href: `${APP_BASE_PATH}/favicon.ico` },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       {

@@ -13,7 +13,7 @@ type RecipeCardProps = {
 export function RecipeCard({ recipe, compact = false }: RecipeCardProps): React.ReactElement {
   return (
     <Link
-      to="/recipes/$recipeId"
+      to="/$recipeId"
       params={{ recipeId: recipe.id }}
       className={`recipe-card${compact ? ' recipe-card--compact' : ''}`}
     >

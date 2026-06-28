@@ -17,7 +17,7 @@ export function RecipeListPage(): React.ReactElement {
   const showRecipeList = !showEmptyCollection && filteredRecipes.length > 0
 
   function onAddRecipe(): void {
-    void navigate({ to: '/recipes/new' })
+    void navigate({ to: '/new' })
   }
 
   return (

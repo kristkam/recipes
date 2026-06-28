@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { RecipeWizard } from '@/components/RecipeWizard'
 
-export const Route = createFileRoute('/recipes/$recipeId/edit')({
+export const Route = createFileRoute('/$recipeId_/edit')({
   ssr: false,
   component: RecipeEditPage,
 })
@@ -15,7 +15,7 @@ function RecipeEditPage(): React.ReactElement {
       mode="edit"
       recipeId={recipeId}
       title="Edit Recipe"
-      cancelDestination="/recipes/$recipeId"
+      cancelDestination="/$recipeId"
       cancelParams={{ recipeId }}
     />
   )

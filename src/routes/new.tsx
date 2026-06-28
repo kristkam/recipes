@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { RecipeWizard } from '@/components/RecipeWizard'
 
-export const Route = createFileRoute('/recipes/new')({
+export const Route = createFileRoute('/new')({
   ssr: false,
   component: RecipeNewPage,
 })

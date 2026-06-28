@@ -5,7 +5,7 @@ import { routeTree } from './routeTree.gen'
 export function getRouter() {
   return createRouter({
     routeTree,
-    basepath: '/recipes',
+    trailingSlash: 'never',
     scrollRestoration: true,
   })
 }
