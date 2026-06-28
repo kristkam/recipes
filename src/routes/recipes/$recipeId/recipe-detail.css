@@ -1,0 +1,104 @@
+.recipe-detail-view {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.recipe-detail-view__card {
+  flex: 1;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.recipe-detail-view__card.app-card--padding-default {
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.recipe-detail-view__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.recipe-detail-view__body {
+  padding: 0;
+}
+
+.recipe-detail-view__section {
+  padding: 1.125rem 1.5rem;
+  border-top: 1px solid var(--color-section-divider);
+}
+
+.recipe-detail-view__section--intro {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.recipe-detail-view__section--intro + .recipe-detail-view__section {
+  border-top: none;
+  padding-top: 0.875rem;
+}
+
+.recipe-detail-view__intro {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.recipe-detail-view__section:first-child {
+  border-top: none;
+}
+
+.recipe-detail-view__section:last-child {
+  padding-bottom: 1.625rem;
+}
+
+.recipe-detail-view__nav-btn {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-nav-action);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.recipe-detail-view__nav-btn:hover {
+  color: var(--color-primary-hover);
+}
+
+.recipe-detail-view__nav-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.recipe-detail-view__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 6vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.recipe-detail-view__meta {
+  margin: 0;
+  font-size: var(--font-size-base);
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+.recipe-detail-view__missing {
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.recipe-detail-view--missing p {
+  margin: 0 0 1rem;
+}

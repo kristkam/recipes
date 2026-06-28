@@ -1,0 +1,34 @@
+.recipe-review {
+  margin: 0;
+}
+
+.recipe-review__group + .recipe-review__group {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.recipe-review__label {
+  margin: 0 0 0.25rem;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+}
+
+.recipe-review__value {
+  margin: 0;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.recipe-review__list {
+  margin: 0;
+  padding-left: 1.125rem;
+}
+
+.recipe-review__list--ordered {
+  padding-left: 1.25rem;
+}

@@ -1,21 +1,25 @@
 import { fileURLToPath, URL } from 'node:url'
 
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import vueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vite.dev/config/
 export default defineConfig({
-  base: '/recipes/',
-  plugins: [
-    vue(),
-    vueJsx(),
-    vueDevTools(),
-  ],
+  base: '/recipes',
+  server: {
+    port: 5173,
+  },
+  preview: {
+    port: 4173,
+  },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+    tsconfigPaths: true,
   },
+  plugins: [
+    tanstackStart(),
+    react(),
+  ],
 })

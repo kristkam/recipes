@@ -1,0 +1,10 @@
+.recipe-form-section {
+  margin-bottom: 0;
+}
+
+.recipe-form-section__heading {
+  margin: 0 0 1rem;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text);
+}

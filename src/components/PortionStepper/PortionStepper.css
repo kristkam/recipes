@@ -1,0 +1,65 @@
+.portion-stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.portion-stepper__label {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.portion-stepper__controls {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.portion-stepper__btn {
+  width: 2.5rem;
+  height: 2.25rem;
+  border: none;
+  background: var(--color-chip);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.portion-stepper__btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.portion-stepper__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.portion-stepper__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.portion-stepper__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  padding: 0 0.5rem;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text);
+}

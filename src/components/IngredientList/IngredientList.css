@@ -1,0 +1,29 @@
+.ingredient-list__heading {
+  margin: 0 0 0.875rem;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.ingredient-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ingredient-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: var(--font-size-base);
+}
+
+.ingredient-list__name {
+  color: var(--color-text);
+}
+
+.ingredient-list__amount {
+  color: var(--color-text);
+  flex-shrink: 0;
+}
