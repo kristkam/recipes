@@ -15,7 +15,8 @@
     "@tanstack/react-router": "^1.166.2",
     "@tanstack/react-start": "^1.166.2",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "styled-components": "^6.4.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

@@ -56,13 +56,14 @@ export function RecipeWizard({
     setDraftHydrated(true)
   }, [mode, recipe, draftHydrated])
 
-  useEffect(() => {
-    setErrors({})
-  }, [currentStep])
-
   const currentStepIndex = RECIPE_WIZARD_STEPS.indexOf(currentStep)
   const isFirstStep = currentStep === 'basics'
   const isLastStep = currentStep === 'review'
+
+  function goToStep(step: RecipeWizardStep): void {
+    setCurrentStep(step)
+    setErrors({})
+  }
 
   function goToCancel(): void {
     if (cancelParams) {
@@ -77,8 +78,7 @@ export function RecipeWizard({
       goToCancel()
       return
     }
-    setCurrentStep(RECIPE_WIZARD_STEPS[currentStepIndex - 1] ?? 'basics')
-    setErrors({})
+    goToStep(RECIPE_WIZARD_STEPS[currentStepIndex - 1] ?? 'basics')
   }
 
   function goNext(): void {
@@ -94,8 +94,7 @@ export function RecipeWizard({
       return
     }
 
-    setCurrentStep(RECIPE_WIZARD_STEPS[currentStepIndex + 1] ?? 'review')
-    setErrors({})
+    goToStep(RECIPE_WIZARD_STEPS[currentStepIndex + 1] ?? 'review')
   }
 
   function saveRecipe(): void {
@@ -151,7 +150,7 @@ export function RecipeWizard({
         <span className="recipe-wizard__spacer" aria-hidden="true" />
       </header>
 
-      <RecipeWizardSteps currentStep={currentStep} onStepChange={setCurrentStep} />
+      <RecipeWizardSteps currentStep={currentStep} onStepChange={goToStep} />
 
       <div className="recipe-wizard__content">
         {currentStep === 'basics' ? (

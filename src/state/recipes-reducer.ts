@@ -1,9 +1,7 @@
-import type { Recipe, RecipeId, RecipeInput } from '@/types/recipe'
+import { PORTION_LIMITS } from '@/constants/recipe'
 import { mockRecipes } from '@/data/recipes'
+import type { Recipe, RecipeId, RecipeInput } from '@/types/recipe'
 import { applyRecipeUpdate, buildRecipeFromInput } from '@/utils/recipeCreate'
-
-const MIN_PORTIONS = 1
-const MAX_PORTIONS = 20
 
 export type RecipesState = {
   recipes: Recipe[]
@@ -26,7 +24,7 @@ export const initialRecipesState: RecipesState = {
 }
 
 function clampPortions(portions: number): number {
-  return Math.min(MAX_PORTIONS, Math.max(MIN_PORTIONS, portions))
+  return Math.min(PORTION_LIMITS.max, Math.max(PORTION_LIMITS.min, portions))
 }
 
 function getRecipeById(recipes: Recipe[], id: RecipeId): Recipe | undefined {

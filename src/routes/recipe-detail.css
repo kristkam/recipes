@@ -4,13 +4,10 @@
   min-height: 100%;
 }
 
-.recipe-detail-view__card {
+.recipe-detail-view > .recipe-detail-view__card {
   flex: 1;
   min-height: 100%;
   overflow: hidden;
-}
-
-.recipe-detail-view__card.app-card--padding-default {
   padding: 0;
   border: 0;
   box-shadow: none;

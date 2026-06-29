@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
+import { PORTION_LIMITS } from '@/constants/recipe'
 import {
   addRecipe,
   initialRecipesState,
@@ -83,6 +84,24 @@ describe('recipes state', () => {
 
     expect(result.state.portionOverrides['creamy-mushroom-pasta']).toBeUndefined()
     expect(result.recipe?.portions).toBe(6)
+  })
+
+  it('clamps portion overrides to the shared bounds', () => {
+    state = recipesReducer(state, {
+      type: 'setPortions',
+      recipeId: 'creamy-mushroom-pasta',
+      portions: PORTION_LIMITS.max + 1,
+    })
+
+    expect(state.portionOverrides['creamy-mushroom-pasta']).toBe(PORTION_LIMITS.max)
+
+    state = recipesReducer(state, {
+      type: 'setPortions',
+      recipeId: 'creamy-mushroom-pasta',
+      portions: PORTION_LIMITS.min - 1,
+    })
+
+    expect(state.portionOverrides['creamy-mushroom-pasta']).toBe(PORTION_LIMITS.min)
   })
 
   it('adds a recipe with a generated id', () => {

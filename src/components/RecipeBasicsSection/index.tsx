@@ -1,5 +1,6 @@
 import { PortionStepper } from '@/components/PortionStepper'
 import { RecipeFormSection } from '@/components/RecipeFormSection'
+import { PORTION_LIMITS } from '@/constants/recipe'
 import type { RecipeDraft } from '@/types/recipe'
 import type { RecipeDraftErrors } from '@/utils/recipeValidation'
 
@@ -56,12 +57,12 @@ export function RecipeBasicsSection({
         <PortionStepper
           portions={draft.portions}
           onIncrement={() => {
-            if (draft.portions < 20) {
+            if (draft.portions < PORTION_LIMITS.max) {
               onDraftChange({ ...draft, portions: draft.portions + 1 })
             }
           }}
           onDecrement={() => {
-            if (draft.portions > 1) {
+            if (draft.portions > PORTION_LIMITS.min) {
               onDraftChange({ ...draft, portions: draft.portions - 1 })
             }
           }}

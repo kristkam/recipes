@@ -1,3 +1,4 @@
+import { PORTION_LIMITS } from '@/constants/recipe'
 import type { RecipeDraft, RecipeWizardStep } from '@/types/recipe'
 
 export type RecipeDraftErrors = Partial<{
@@ -7,9 +8,6 @@ export type RecipeDraftErrors = Partial<{
   ingredients: string
   instructions: string
 }>
-
-const MIN_PORTIONS = 1
-const MAX_PORTIONS = 20
 
 function hasValidIngredient(draft: RecipeDraft): boolean {
   return draft.ingredients.some(
@@ -37,8 +35,8 @@ export function validateBasicsStep(draft: RecipeDraft): RecipeDraftErrors {
     errors.prepTimeMinutes = 'Enter a cooking time greater than 0 minutes.'
   }
 
-  if (draft.portions < MIN_PORTIONS || draft.portions > MAX_PORTIONS) {
-    errors.portions = `Portions must be between ${MIN_PORTIONS} and ${MAX_PORTIONS}.`
+  if (draft.portions < PORTION_LIMITS.min || draft.portions > PORTION_LIMITS.max) {
+    errors.portions = `Portions must be between ${PORTION_LIMITS.min} and ${PORTION_LIMITS.max}.`
   }
 
   return errors

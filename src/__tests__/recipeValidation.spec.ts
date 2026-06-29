@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { PORTION_LIMITS } from '@/constants/recipe'
 import type { RecipeDraft } from '@/types/recipe'
 import {
   hasValidationErrors,
@@ -28,6 +29,15 @@ describe('recipeValidation', () => {
 
     expect(errors.title).toBeTruthy()
     expect(errors.prepTimeMinutes).toBeTruthy()
+  })
+
+  it('requires portions within the shared bounds', () => {
+    expect(validateBasicsStep({ ...validDraft, portions: PORTION_LIMITS.min - 1 }).portions).toBe(
+      `Portions must be between ${PORTION_LIMITS.min} and ${PORTION_LIMITS.max}.`,
+    )
+    expect(validateBasicsStep({ ...validDraft, portions: PORTION_LIMITS.max + 1 }).portions).toBe(
+      `Portions must be between ${PORTION_LIMITS.min} and ${PORTION_LIMITS.max}.`,
+    )
   })
 
   it('requires at least one valid ingredient', () => {
