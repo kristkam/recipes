@@ -4,8 +4,10 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
+import { APP_BASE_PATH } from './src/app-config'
+
 export default defineConfig({
-  base: '/',
+  base: `${APP_BASE_PATH}/`,
   server: {
     port: 5173,
   },
